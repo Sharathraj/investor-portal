@@ -10,7 +10,7 @@ import org.junit.*
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions
  */
 @TestMixin(GrailsUnitTestMixin)
-class UserControllerTests {
+class AddressControllerTests {
 
     void setUp() {
         // Setup logic here
