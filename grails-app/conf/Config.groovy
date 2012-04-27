@@ -114,3 +114,19 @@ grails {
                 "mail.smtp.socketFactory.fallback":"false"]
     }
 }*/
+
+
+quartz {
+    autoStartup = true
+    jdbcStore = false
+}
+
+environments {
+    test
+            {
+                quartz
+                        {
+                            autoStartup = false
+                        }
+            }
+}
