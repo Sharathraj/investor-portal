@@ -30,6 +30,9 @@
 			<g:form method="post" >
 				<g:hiddenField name="id" value="${userInstance?.id}" />
 				<g:hiddenField name="version" value="${userInstance?.version}" />
+
+                <g:hiddenField name="id" value="${addressInstance?.id}" />
+                <g:hiddenField name="version" value="${addressInstance?.version}" />
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>

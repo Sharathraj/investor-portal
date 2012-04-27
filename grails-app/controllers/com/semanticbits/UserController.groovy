@@ -1,11 +1,14 @@
 package com.semanticbits
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.plugins.springsecurity.Secured
 
 class UserController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+
+    @Secured(['ROLE_ADMIN'])
     def index() {
         redirect(action: "list", params: params)
     }
@@ -17,10 +20,32 @@ class UserController {
 
     def create() {
         [userInstance: new User(params)]
+
     }
 
     def save() {
+
+
+
+       /* def addressid= address?.id
+*/
+
+
         def userInstance = new User(params)
+
+        println(params.lane)
+
+        def addressInstance = new Address(params)
+
+        def address = addressInstance.save()
+
+
+     /*   sendMail {
+            to ""
+            subject "Testing Mail"
+            text "Testing mail,this mail is send using grails application :)"
+        }*/
+
         if (!userInstance.save(flush: true)) {
             render(view: "create", model: [userInstance: userInstance])
             return
@@ -43,13 +68,14 @@ class UserController {
 
     def edit() {
         def userInstance = User.get(params.id)
+        def addressInstance = Address.get(params.id)
         if (!userInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])
             redirect(action: "list")
             return
         }
 
-        [userInstance: userInstance]
+        [userInstance: userInstance,addressInstance: addressInstance]
     }
 
     def update() {

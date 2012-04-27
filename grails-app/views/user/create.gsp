@@ -1,6 +1,11 @@
 <%@ page import="com.semanticbits.User" %>
+<%@ page import="com.semanticbits.Address" %>
 <!doctype html>
 <html>
+%{--
+<g:javascript plugin="jquery"/>--}%
+<r:require module="application"/>
+%{--<r:require module="application1"/>--}%
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />

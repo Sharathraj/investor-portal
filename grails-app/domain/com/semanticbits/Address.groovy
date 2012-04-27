@@ -12,8 +12,6 @@ class Address {
 
     String zipcode
 
-
-
     static constraints = {
 
     }
